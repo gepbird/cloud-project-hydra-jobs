@@ -12,7 +12,7 @@
           (final: prev: {
             docker = prev.docker.overrideAttrs (old: {
               postFixup = (old.postFixup or "") + ''
-                touch $out/1
+                touch $out/2
               '';
             });
           })
