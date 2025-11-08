@@ -15,13 +15,25 @@
                 touch $out/5
               '';
             });
+            failing-package = prev.stdenv.mkDerivation {
+              name = "failing-package";
+              dontUnpack = true;
+              buildPhase = ''
+                echo "This package is intentionally failing"
+                exit 1
+              '';
+            };
           })
         ];
       };
     in
     {
       hydraJobs = {
-        inherit (pkgs) minikube docker;
+        inherit (pkgs)
+          minikube
+          docker
+          failing-package
+          ;
       };
     };
 }
