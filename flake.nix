@@ -12,7 +12,7 @@
           (final: prev: {
             docker = prev.docker.overrideAttrs (old: {
               postFixup = (old.postFixup or "") + ''
-                touch $out/5
+                touch $out/6
               '';
             });
             failing-package = prev.stdenv.mkDerivation {
